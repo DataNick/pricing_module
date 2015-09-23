@@ -27,26 +27,37 @@
 	# Markup calculator needs to accept initial base price AND different categories of markups AND calculate final cost
 	# Flat markup is calculated first; all other markups calculated on top of the (base price + flat markup)
 
+	# def add_tax(product, people)
+	# 	case product
+	# 	when 1 then 0.02 + (people * 0.012)
+	# 	when 2 then 0.075 + (people*0.012)
+	# 	when 3 then 0.13 + (people * 0.012)
+	# 	when 0 then people*0.012
+	# 	when 7 
+	# 		return
+	# 	end
+	# end
+
 	def add_tax(product, people)
-		case product
-		when 1 then 0.02 + (people * 0.012)
-		when 2 then 0.075 + (people*0.012)
-		when 3 then 0.13 + (people * 0.012)
-		when 0 then people*0.012
-		when 7 
-			return
+		if product == "food"
+			0.13 + (people * 0.012)
+		elsif product == "drugs"
+			0.075 + (people*0.012)
+		elsif product == "electronics"
+			0.02 + (people * 0.012)
+		else
+			people*0.012
 		end
 	end
 
-
 	def markup_calc(base_price, num_people, category)
 		case category
-		when 1 then puts (flat_markup(base_price) * (1+add_tax(category,num_people))).round(2)
-		when 2 then puts (flat_markup(base_price) * (1+add_tax(category,num_people))).round(2)
-		when 3 then puts (flat_markup(base_price) * (1+add_tax(category,num_people))).round(2)
-		when 4 then puts (flat_markup(base_price) * (1+add_tax(category, num_people))).round(2)
+		when "food" then puts (flat_markup(base_price) * (1+add_tax(category,num_people))).round(2)
+		when "drugs" then puts (flat_markup(base_price) * (1+add_tax(category,num_people))).round(2)
+		when "electronics" then puts (flat_markup(base_price) * (1+add_tax(category,num_people))).round(2)
+		when /.*/ then puts (flat_markup(base_price) * (1+add_tax(category, num_people))).round(2)
 		else puts "Please make a selection"
 		end
 	end
 
-markup_calc(1299.99, 3, 3)
+markup_calc(1299.99, 3, "food")
