@@ -1,7 +1,7 @@
 require "./lib/price.rb"
-require "test/unit"
+require "minitest/autorun"
 
-class TestPrice < Test::Unit::TestCase
+class TestPrice < MiniTest::Unit::TestCase
 
   def test_sample
     assert_equal(4, 2+2)
