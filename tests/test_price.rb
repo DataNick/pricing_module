@@ -22,6 +22,17 @@ describe "Price" do
 		end
 	end
 
+	describe "when passing a non-integer or non-float object" do
+		it "raises an error when not passed a float or integer" do
+			proc {@object.flat_markup("string")}.must_raise ArgumentError
+	end
+
+	describe "when passing num_of_people value" do
+		it "raises an error when number is negative value and is not an integer" do
+			proc {@object.for_each_person(-2)}.must_raise ArgumentError
+		end
+	end
+
 	describe "when negative values are passed as arguments" do
 		it "raises an error if add_tax is passed a negative value for people" do
 			proc {@object.add_tax("string", -3)}.must_raise ArgumentError
@@ -40,10 +51,6 @@ describe "Price" do
 		end
 	end
 
-	describe "when passing a non-integer or non-float object" do
-		it "raises an error when not passed a float or integer" do
-			proc {@object.flat_markup("string")}.must_raise ArgumentError
-	end
 end
 
 end

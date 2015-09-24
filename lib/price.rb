@@ -1,4 +1,4 @@
-module Price
+# module Price
 
 	def flat_markup(cost)
 		if cost.is_a?(Float) || cost.is_a?(Integer)
@@ -12,7 +12,11 @@ module Price
 
 
 	def for_each_person(num_of_people)
-		num_of_people*0.012
+		if num_of_people.is_a?(Integer) && num_of_people >= 0
+			num_of_people*0.012
+		else
+			raise ArgumentError
+		end
 	end
 
 
@@ -35,25 +39,31 @@ module Price
 	# Another system calculates the base price depending on the number of products needing to packaged.
 	# Markup calculator needs to accept initial base price AND different categories of markups AND calculate final cost
 	# Flat markup is calculated first; all other markups calculated on top of the (base price + flat markup)
-
-	# def add_tax(product, people)
-	# 	case product
-	# 	when 1 then 0.02 + (people * 0.012)
-	# 	when 2 then 0.075 + (people*0.012)
-	# 	when 3 then 0.13 + (people * 0.012)
-	# 	when 0 then people*0.012
-	# 	when 7 
-	# 		return
-	# 	end
-	# end
-
-	def add_tax(product, people)
-		if people < 0
+	def people_checker(people)
+		if people.is_a?(Integer)
+			if people < 0
+				raise ArgumentError
+			end
+		else
 			raise ArgumentError
 		end
+	end
+
+	def product_checker(product)
 		if !product.is_a?(String)
 			raise ArgumentError
 		end
+	end
+
+	def add_tax(product, people)
+		# if !people.is_a?(Integer)
+		# 	raise ArgumentError
+		# end
+		# if !product.is_a?(String)
+		# 	raise ArgumentError
+		# end
+		product_checker(product)
+		people_checker(people)
 		if product == "food"
 			0.13 + (for_each_person(people))
 		elsif product == "drugs"
@@ -75,8 +85,8 @@ module Price
 		end
 	end
 
-end
+# end
 
-# markup_calc(1299.99, 3, "food")
-# markup_calc(5432, 1, "drugs")
-# markup_calc(12456.95, 4, "books")
+markup_calc(1299.99, 3, "food")
+markup_calc(5432, 1, "drugs")
+markup_calc(12456.95, 4, "books")
