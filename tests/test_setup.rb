@@ -2,8 +2,7 @@ require "minitest/autorun"
 require "./lib/price.rb"
 
 class TestSetup < Minitest::Test
-	def default_test
-	end
+
 
 # describe Price do
 # 	before do

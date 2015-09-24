@@ -1,8 +1,15 @@
 module Price
-	
+
 	def flat_markup(cost)
-		cost*(1+0.05)
+		if cost.is_a?(Float) || cost.is_a?(Integer)
+			if (cost != nil && cost != 0)
+				cost*(1+0.05)
+			end
+		else
+			raise ArgumentError
+		end
 	end
+
 
 	def for_each_person(num_of_people)
 		num_of_people*0.012
@@ -41,14 +48,20 @@ module Price
 	# end
 
 	def add_tax(product, people)
+		if people < 0
+			raise ArgumentError
+		end
+		if !product.is_a?(String)
+			raise ArgumentError
+		end
 		if product == "food"
-			0.13 + (people * 0.012)
+			0.13 + (for_each_person(people))
 		elsif product == "drugs"
-			0.075 + (people*0.012)
+			0.075 + (for_each_person(people))
 		elsif product == "electronics"
-			0.02 + (people * 0.012)
+			0.02 + (for_each_person(people))
 		else
-			people*0.012
+			for_each_person(people)
 		end
 	end
 
@@ -58,10 +71,12 @@ module Price
 		when "drugs" then puts (flat_markup(base_price) * (1+add_tax(category,num_people))).round(2)
 		when "electronics" then puts (flat_markup(base_price) * (1+add_tax(category,num_people))).round(2)
 		when /.*/ then puts (flat_markup(base_price) * (1+add_tax(category, num_people))).round(2)
-		else puts "Please make a selection"
+		else puts "Not a valid input"
 		end
 	end
 
 end
 
 # markup_calc(1299.99, 3, "food")
+# markup_calc(5432, 1, "drugs")
+# markup_calc(12456.95, 4, "books")
