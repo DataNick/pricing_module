@@ -1,3 +1,5 @@
+module Price
+	
 	def flat_markup(cost)
 		cost*(1+0.05)
 	end
@@ -60,4 +62,6 @@
 		end
 	end
 
-markup_calc(1299.99, 3, "food")
+end
+
+# markup_calc(1299.99, 3, "food")
