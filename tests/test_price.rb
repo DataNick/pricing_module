@@ -10,32 +10,41 @@ describe "Price" do
 		@object.extend(Price)
 	end
 
-	it "returns an added five percent for a price" do
-		@object.flat_markup(10).must_equal 10.5
+	describe "when a price is inputed" do
+		it "returns an added five percent for a price" do
+			@object.flat_markup(10).must_equal 10.5
+		end
 	end
 
-	it "returns a Float object" do
-	@object.flat_markup(10).must_be_instance_of Float
+	describe "when must return an object of type Float" do
+		it "returns a Float object" do
+		@object.flat_markup(10).must_be_instance_of Float
+		end
 	end
 
-
-	it "raises an error if add_tax is passed a negative value for people" do
-		proc {@object.add_tax("string", -3)}.must_raise ArgumentError
+	describe "when negative values are passed as arguments" do
+		it "raises an error if add_tax is passed a negative value for people" do
+			proc {@object.add_tax("string", -3)}.must_raise ArgumentError
+		end
 	end
 
-	it "raises an error if add_tax is passed a non-string for product" do
-		proc {@object.add_tax(2, 3)}.must_raise ArgumentError
+	describe "when passed a non-string object in product variable" do
+		it "raises an error if add_tax is passed a non-string for product" do
+			proc {@object.add_tax(2, 3)}.must_raise ArgumentError
+		end
 	end
 
-
-	it "raises an error if add_tax is passed a non-string for product AND a negative integer" do
-		proc {@object.add_tax(2, -3)}.must_raise ArgumentError
+	describe "when passed negative and non-string values" do
+		it "raises an error if add_tax is passed a non-string for product AND a negative integer" do
+			proc {@object.add_tax(2, -3)}.must_raise ArgumentError
+		end
 	end
 
-	it "raises an error when not passed a float or integer" do
-		proc {@object.flat_markup("string")}.must_raise ArgumentError
+	describe "when passing a non-integer or non-float object" do
+		it "raises an error when not passed a float or integer" do
+			proc {@object.flat_markup("string")}.must_raise ArgumentError
 	end
-
+end
 
 end
 # class TestPrice < MiniTest::Test
