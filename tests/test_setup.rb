@@ -1,7 +1,7 @@
 require "minitest/autorun"
 require "./lib/price.rb"
 
-class TestSetup < Minitest::Test
+class TestSetup < Minitest::Unit::TestCase
 
 
 # describe Price do
@@ -29,16 +29,25 @@ class TestSetup < Minitest::Test
 	end
 
 	def test_people_checker
-		# assert_raises (RuntimeError, -1) do
-		#  	raise ArgumentError, @object.people_checker(-1)
-		# end
-		# assert_equal ArgumentError, @object.people_checker("error")
+		rando = rand(1..10000)
+		assert_equal rando, @object.people_checker(rando)
 	end
 
 	def test_product_checker
-	# 	assert_raises(RuntimeError, 1) do
-	# 	 	raise ArgumentError, proc {@object.product_checker(1)}
-	# 	end
+		assert_equal String.new, @object.product_checker(String.new)
+	end
+
+
+	def test_electronics_markup
+		assert_equal 2.59, @object.electronics_markup(123.50)
+	end
+
+	def test_food_markup
+		assert_equal 1.84, @object.food_markup(13.50)
+	end
+
+	def test_pharmaceuticals_markup
+		assert_equal 315.21, @object.pharmaceuticals_markup(4002.65)
 	end
 
 	def test_add_tax

@@ -66,7 +66,7 @@ describe "Price" do
 
 	describe "when passing the type of product" do
 		it "raises an error if variable passed is not a string" do
-			proc {@object.product_checker(45)}.must_raise ArgumentError
+			proc {@object.product_checker(!Object.new.is_a?(String))}.must_raise ArgumentError
 		end
 	end
 

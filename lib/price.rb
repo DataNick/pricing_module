@@ -62,6 +62,8 @@ module Price
 		if people.is_a?(Integer)
 			if people < 0
 				raise ArgumentError
+			else
+				people
 			end
 		else
 			raise ArgumentError
@@ -71,6 +73,8 @@ module Price
 	def product_checker(product)
 		if !product.is_a?(String)
 			raise ArgumentError
+		else
+			product
 		end
 	end
 
@@ -99,4 +103,6 @@ module Price
 	end
 
 end
+# markup_calc(1299.99, 3, "food")
 # markup_calc(5432, 1, "drugs")
+# markup_calc(12456.95, 4, "books")

@@ -6,8 +6,8 @@ Gem::Specification.new do |spec|
   spec.version       = '1.0'
   spec.authors       = ["Your Name Here"]
   spec.email         = ["youremail@yourdomain.com"]
-  spec.summary       = %q{Short summary of your project}
-  spec.description   = %q{Longer description of your project.}
+  spec.summary       = %q{Repackaging products based on category and number of people}
+  spec.description   = %q{The module calculates prices based on categories of goods, the number of people involved and base-line cost of materials}
   spec.homepage      = "http://domainforproject.com/"
   spec.license       = "MIT"
 
