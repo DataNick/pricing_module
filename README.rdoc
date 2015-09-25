@@ -5,6 +5,6 @@ Running minitests from the command happens with the 'rake test' command
 /
 /
 /
-Running specific tests from the command line simply write ruby tests/test_setup.rb -v-n test_whatever_name_of_method //
+Running specific tests from the command line simply write ruby tests/test_setup.rb -v-n test_name_of_method //
 
 
