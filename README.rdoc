@@ -1,6 +1,6 @@
 Using minitest/autorun all the tests are run
-Running minitests from the command happens with the 'rake tests' command
 test_setup.rb deals with unit tests 
 test_price.rb is the spec file that ties into unit tests
+Running minitests from the command happens with the 'rake tests' command
 
 
