@@ -3,14 +3,6 @@ require "./lib/price.rb"
 
 class TestSetup < Minitest::Unit::TestCase
 
-
-# describe Price do
-# 	before do
-# 		@object=Object.new
-# 		# @object.extend(Price)
-# 	end
-# end
-
 	def setup
 		@object=Object.new
 		@object.extend(Price)
