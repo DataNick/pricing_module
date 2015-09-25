@@ -1,7 +1,7 @@
 require "minitest/autorun"
 require "./lib/price.rb"
 
-class TestSetup < Minitest::Unit::TestCase
+class TestSetup < Minitest::Test
 
 	def setup
 		@object=Object.new
