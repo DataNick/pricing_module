@@ -1,4 +1,4 @@
-# Price problem coding challenge
+= Price problem coding challenge
 1. Using minitest/autorun all the tests are run from the command line
 2. test_setup.rb deals with unit tests //
 3. test_price.rb is the spec file that ties into unit tests //
