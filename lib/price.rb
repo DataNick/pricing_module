@@ -1,4 +1,14 @@
-module Price
+class Package
+
+	attr_accessor :price, :people_required, :category
+
+	def accept_input(input)
+		if cost.is_a?(Float) || cost.is_a?(Integer)
+			# go off and o your thing
+		else
+			# show invalid input error
+		end
+	end
 
 	def flat_markup(cost)
 		if cost.is_a?(Float) || cost.is_a?(Integer)
