@@ -1,8 +1,9 @@
 class Product
-  FOOD = 0.13
-  DRUG = 0.075
-  ELECTRONICS = 0.02
-  PEOPLE_PERCENT = 0.012
+
+  FOOD_RATE = 0.13
+  DRUG_RATE = 0.075
+  ELECTRONICS_RATE = 0.02
+  PEOPLE_RATE = 0.012
   FLAT_RATE = 0.05
 
 	attr_accessor :price, :people_required, :category
@@ -19,7 +20,7 @@ class Product
         flat_markup
       end
     else
-      raise(ArgumentError, "Price must be either a float or integer")
+      raise(ArgumentError, "Price must be either a float or an integer")
     end
   end
 
@@ -28,17 +29,17 @@ class Product
   end
 
   def people_markup
-    @people * PEOPLE_PERCENT
+    @people * PEOPLE_RATE
   end
 
   def category_markup
-    case @category
-    when "drugs" then drug_markup = flat_markup * DRUG
-    when "food" then food_markup = flat_markup * FOOD
-    when "electronics" then electronic_markup = flat_markup * ELECTRONICS
-    else
-      0
-    end
+    category_markup = case @category
+      when "drugs" then flat_markup * DRUG
+      when "food" then flat_markup * FOOD
+      when "electronics" then flat_markup * ELECTRONICS
+      else
+        0
+      end
   end
 
 	# def flat_markup(cost)
@@ -51,48 +52,48 @@ class Product
 	# 	end
 	# end
 
-	def for_each_person(num_of_people)
-		if num_of_people.is_a?(Integer) && num_of_people >= 0
-			(num_of_people*0.012).round(3)
+	def number_of_people_rate(number)
+		if number.is_a?(Integer) && number >= 0
+			(number * PEOPLE_RATE)
 		else
-			raise ArgumentError
+			raise(ArgumentError, "Must pass in a number")
 		end
 	end
 
 
-	def pharmaceuticals_markup(cost)
-		if cost.is_a?(Float) || cost.is_a?(Integer)
-			if cost != nil
-				(flat_markup(cost)*0.075).round(2)
-			end
-		else
-			raise ArgumentError
-		end
-	end
+	# def pharmaceuticals_markup(cost)
+	# 	if cost.is_a?(Float) || cost.is_a?(Integer)
+	# 		if cost != nil
+	# 			(flat_markup(cost)*0.075).round(2)
+	# 		end
+	# 	else
+	# 		raise(ArgumentError, "Must pass in price as a Float or Integer")
+	# 	end
+	# end
 
-	def food_markup(cost)
-		if cost.is_a?(Float) || cost.is_a?(Integer)
-			if cost != nil
-				(flat_markup(cost)*0.13).round(2)
-			end
-		else
-			raise ArgumentError
-		end
-	end
+	# def food_markup(cost)
+	# 	if cost.is_a?(Float) || cost.is_a?(Integer)
+	# 		if cost != nil
+	# 			(flat_markup(cost)*0.13).round(2)
+	# 		end
+	# 	else
+	# 		raise ArgumentError
+	# 	end
+	# end
 
-	def electronics_markup(cost)
-		if cost.is_a?(Float) || cost.is_a?(Integer)
-			if cost != nil
-				(flat_markup(cost)*0.02).round(2)
-			end
-		else
-			raise ArgumentError
-		end
-	end
+	# def electronics_markup(cost)
+	# 	if cost.is_a?(Float) || cost.is_a?(Integer)
+	# 		if cost != nil
+	# 			(flat_markup(cost)*0.02).round(2)
+	# 		end
+	# 	else
+	# 		raise ArgumentError
+	# 	end
+	# end
 
 
 
-	def people_checker(people)
+	def assert_valid_people_input(people)
 		if people.is_a?(Integer)
 			if people < 0
 				raise ArgumentError
@@ -104,7 +105,7 @@ class Product
 		end
 	end
 
-	def product_checker(product)
+	def assert_valid_product_input(product)
 		if !product.is_a?(String)
 			raise ArgumentError
 		else
@@ -135,12 +136,6 @@ class Product
 		else puts "Not a valid input for category"
 		end
 	end
-
-  private
-
-  def clean_price(price)
-
-  end
 
 end
 # markup_calc(1299.99, 3, "food")
