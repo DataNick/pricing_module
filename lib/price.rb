@@ -2,23 +2,44 @@ class Package
 
 	attr_accessor :price, :people_required, :category
 
-	def accept_input(input)
-		if cost.is_a?(Float) || cost.is_a?(Integer)
-			# go off and o your thing
-		else
-			# show invalid input error
-		end
-	end
+  def initialize(price, people_required, category)
+    @price = price
+    @people_required = people_required
+    @category = category
+  end
 
-	def flat_markup(cost)
-		if cost.is_a?(Float) || cost.is_a?(Integer)
-			if (cost != nil && cost != 0)
-				(cost*(1+0.05)).round(2)
-			end
-		else
-			raise ArgumentError
-		end
-	end
+  def flat_markup
+    @price * 1.05
+  end
+
+	def validate_price(input)
+    if @price.is_a?(Float) || @price.is_a?(Integer)
+      if (@price != nil)
+        flat_markup
+    else
+      raise(ArgumentError, "Price must be either a float or integer")
+    end
+  end
+
+	# def accept_input(input)
+	# 	if cost.is_a?(Float) || cost.is_a?(Integer)
+	# 		# go off and o your thing
+	# 	else
+	# 		# show invalid input error
+	# 	end
+	# end
+
+	# def flat_markup(cost)
+	# 	if cost.is_a?(Float) || cost.is_a?(Integer)
+	# 		if (cost != nil && cost != 0)
+	# 			(cost*(1+0.05)).round(2)
+	# 		end
+	# 	else
+	# 		raise ArgumentError
+	# 	end
+	# end
+
+
 
 
 	def for_each_person(num_of_people)
