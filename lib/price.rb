@@ -1,4 +1,9 @@
-class Package
+class Product
+  FOOD = 0.13
+  DRUG = 0.075
+  ELECTRONICS = 0.02
+  PEOPLE_PERCENT = 0.012
+  FLAT_RATE = 0.05
 
 	attr_accessor :price, :people_required, :category
 
@@ -8,26 +13,33 @@ class Package
     @category = category
   end
 
-  def flat_markup
-    @price * 1.05
-  end
-
 	def validate_price(input)
     if @price.is_a?(Float) || @price.is_a?(Integer)
       if (@price != nil)
         flat_markup
+      end
     else
       raise(ArgumentError, "Price must be either a float or integer")
     end
   end
 
-	# def accept_input(input)
-	# 	if cost.is_a?(Float) || cost.is_a?(Integer)
-	# 		# go off and o your thing
-	# 	else
-	# 		# show invalid input error
-	# 	end
-	# end
+  def flat_markup
+    @price + (@price * FLAT_RATE)
+  end
+
+  def people_markup
+    @people * PEOPLE_PERCENT
+  end
+
+  def category_markup
+    case @category
+    when "drugs" then drug_markup = flat_markup * DRUG
+    when "food" then food_markup = flat_markup * FOOD
+    when "electronics" then electronic_markup = flat_markup * ELECTRONICS
+    else
+      0
+    end
+  end
 
 	# def flat_markup(cost)
 	# 	if cost.is_a?(Float) || cost.is_a?(Integer)
@@ -39,9 +51,6 @@ class Package
 	# 	end
 	# end
 
-
-
-
 	def for_each_person(num_of_people)
 		if num_of_people.is_a?(Integer) && num_of_people >= 0
 			(num_of_people*0.012).round(3)
@@ -50,9 +59,6 @@ class Package
 		end
 	end
 
-
-
-	# Markups added for different materials
 
 	def pharmaceuticals_markup(cost)
 		if cost.is_a?(Float) || cost.is_a?(Integer)
@@ -84,10 +90,7 @@ class Package
 		end
 	end
 
-	# system 2
-	# Another system calculates the base price depending on the number of products needing to packaged.
-	# Markup calculator needs to accept initial base price AND different categories of markups AND calculate final cost
-	# Flat markup is calculated first; all other markups calculated on top of the (base price + flat markup)
+
 
 	def people_checker(people)
 		if people.is_a?(Integer)
@@ -132,6 +135,12 @@ class Package
 		else puts "Not a valid input for category"
 		end
 	end
+
+  private
+
+  def clean_price(price)
+
+  end
 
 end
 # markup_calc(1299.99, 3, "food")
