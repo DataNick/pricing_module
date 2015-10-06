@@ -7,13 +7,12 @@ class TestSetup < Minitest::Test
 		@product=Product.new(1299.99, 3, "food")
 	end
 
-	# def test_flat_markup
-	# 	assert_equal 1364.9895, @product.flat_markup(1299.99)
-	# end
-
 	def test_total_price_with_markups
 		assert_equal 1591.58, @product.total_price_with_markups
 	end
 
+	# def test_total_price_with_markups
+	# 	refute_equal 1591.58, @product.price= "1299.99"
+	# end
 
 end
