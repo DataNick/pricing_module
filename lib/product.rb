@@ -55,18 +55,3 @@ class Product
 
 end
 
-product = Product.new(1299.99, 3, "food")
-product2 = Product.new(5432, 1, "drugs")
-product3 = Product.new(12456.95, 4, "books")
-
-puts product
-# puts product.material
-# puts product.number_of_people
-# puts product.material
-# puts product.flat_markup
-puts product.total_price_with_markups
-puts product2.total_price_with_markups
-puts product3.total_price_with_markups
-# markup_calc(1299.99, 3, "food")
-# markup_calc(5432, 1, "drugs")
-# markup_calc(12456.95, 4, "books")

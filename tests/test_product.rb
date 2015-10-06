@@ -12,7 +12,7 @@ class TestSetup < Minitest::Test
 	# end
 
 	def test_total_price_with_markups
-		assert_equal 1591.58
+		assert_equal 1591.58, @product.total_price_with_markups
 	end
 
 
