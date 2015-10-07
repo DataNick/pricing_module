@@ -9,7 +9,7 @@ class Product
 
   private_constant :FOOD_RATE, :DRUG_RATE, :ELECTRONICS_RATE, :PEOPLE_RATE, :FLAT_MARKUP_RATE, :ZERO_MARKUP
 
-	attr_accessor :price, :number_of_people, :material
+  attr_accessor :price, :number_of_people, :material
 
   def initialize(price, number_of_people, material)
     check_validity(price, number_of_people, material)
