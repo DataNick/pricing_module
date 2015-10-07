@@ -1,8 +1,8 @@
 = Price problem coding challenge
 1. Using minitest/autorun all the tests are run from the command line
-2. test_product.rb is the spec file that ties into unit tests //
+2. test_product.rb is the spec file that ties into unit tests 
 3. Running minitests from the command happens with the 'rake test' command
-4. Running specific tests from the command line simply write ruby tests/test_product.rb -v-n test_name_of_method //
+4. Running specific tests from the command line simply write ruby tests/test_product.rb -v-n test_name_of_method 
 5. Running test on method total_price_with_markups that ensures all private methods run properly
 
 
